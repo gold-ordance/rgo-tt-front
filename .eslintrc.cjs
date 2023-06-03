@@ -6,12 +6,16 @@ module.exports = {
 	extends: ["plugin:react/recommended", "airbnb"],
 	overrides: [],
 	parserOptions: {
+		ecmaFeatures: {
+			jsx: true,
+		},
 		ecmaVersion: "latest",
 		sourceType: "module",
 	},
 	plugins: ["react", "react-hooks", "simple-import-sort", "import"],
 	rules: {
 		"linebreak-style": 0,
+		indent: "off",
 		quotes: ["error", "double"],
 		"no-unused-vars": "warn",
 		"object-curly-newline": "off",
