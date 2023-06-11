@@ -5,6 +5,7 @@ module.exports = {
 	},
 	extends: ["plugin:react/recommended", "airbnb"],
 	overrides: [],
+	parser: "@typescript-eslint/parser",
 	parserOptions: {
 		ecmaFeatures: {
 			jsx: true,
@@ -12,10 +13,15 @@ module.exports = {
 		ecmaVersion: "latest",
 		sourceType: "module",
 	},
-	plugins: ["react", "react-hooks", "simple-import-sort", "import"],
+	plugins: ["react", "react-hooks", "simple-import-sort", "import", "@typescript-eslint"],
 	rules: {
+		"indent": "off",
+		"no-mixed-spaces-and-tabs": 0,
+		"no-tabs": "off",
+		"react/jsx-indent": [2, "tab"],
+		"react/jsx-indent-props": [2, "tab"],
+		"react/jsx-props-no-spreading": "off",
 		"linebreak-style": 0,
-		indent: "off",
 		quotes: ["error", "double"],
 		"no-unused-vars": "warn",
 		"object-curly-newline": "off",
@@ -23,9 +29,9 @@ module.exports = {
 		"import/prefer-default-export": "off",
 		"import/no-unresolved": "off",
 		"import/extensions": "off",
+		"computed-property-spacing": 0,
 		"import/no-extraneous-dependencies": "off",
 		"comma-dangle": "off",
-		"no-tabs": "off",
 		"react/prop-types": ["off"],
 		"react/react-in-jsx-scope": "off",
 		"react/jsx-filename-extension": [
