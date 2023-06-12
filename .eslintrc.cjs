@@ -18,6 +18,8 @@ module.exports = {
 		"indent": "off",
 		"no-mixed-spaces-and-tabs": 0,
 		"no-tabs": "off",
+		"no-shadow": "off",
+		"@typescript-eslint/no-shadow": "warn",
 		"react/jsx-indent": [2, "tab"],
 		"react/jsx-indent-props": [2, "tab"],
 		"react/jsx-props-no-spreading": "off",
