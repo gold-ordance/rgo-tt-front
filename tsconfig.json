@@ -21,14 +21,29 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "allowSyntheticDefaultImports": true
-  },
-  "include": [
-    "src"
-  ],
-  "references": [
-    {
-      "path": "./tsconfig.node.json"
-    }
-  ]
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@shared": [
+        "./shared"
+      ],
+      "@app": [
+        "./app"
+      ],
+      "@app/types": [
+        "./app/types"
+      ],
+      "@features": [
+        "./features"
+      ]
+    },
+    "include": [
+      "src"
+    ],
+    "references": [
+      {
+        "path": "./tsconfig.node.json"
+      }
+    ]
+  }
 }
