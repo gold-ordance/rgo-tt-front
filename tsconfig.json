@@ -27,6 +27,9 @@
       "@shared": [
         "./shared"
       ],
+      "@widgets": [
+        "./widgets"
+      ],
       "@app": [
         "./app"
       ],
@@ -35,6 +38,15 @@
       ],
       "@features": [
         "./features"
+      ],
+      "@features/*": [
+        "./features/*"
+      ],
+      "@entities": [
+        "./entities"
+      ],
+      "@entities/*": [
+        "./entities/*"
       ]
     },
     "include": [

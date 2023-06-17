@@ -5,21 +5,23 @@ import dynamicImport from "vite-plugin-dynamic-import";
 import react from "@vitejs/plugin-react";
 
 export default defineConfig({
-  plugins: [react(), dynamicImport()],
-  server: {
+ plugins: [react(), dynamicImport()],
+ server: {
 	host: true,
 	port: 5173,
 	watch: {
-	  usePolling: true
+	 usePolling: true
 	},
 	strictPort: true
-  },
-  resolve: {
+ },
+ resolve: {
 	alias: {
-	  "@shared": path.resolve(__dirname, "./src/shared"),
-	  "@app": path.resolve(__dirname, "./src/app"),
-	  "@app/types": path.resolve(__dirname, "./src/app/types"),
-	  "@features": path.resolve(__dirname, "./src/features"),
+	 "@shared": path.resolve(__dirname, "./src/shared"),
+	 "@widgets": path.resolve(__dirname, "./src/widgets"),
+	 "@app": path.resolve(__dirname, "./src/app"),
+	 "@app/types": path.resolve(__dirname, "./src/app/types"),
+	 "@features": path.resolve(__dirname, "./src/features"),
+	 "@entities": path.resolve(__dirname, "./src/entities"),
 	}
-  }
+ }
 });
