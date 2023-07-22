@@ -1,0 +1,12 @@
+version: "3"
+services:
+  app:
+    build: .
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./src:/app/src
+    environment:
+      - REACT_APP_NAME=task-tracker
+      - WATCHPACK_POLLING=true
+
