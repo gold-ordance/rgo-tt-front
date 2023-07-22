@@ -1,3 +1,4 @@
+import axios from "axios";
 import { v4 as id } from "uuid";
 import { create } from "zustand";
 
@@ -8,16 +9,45 @@ interface Task {
 	completed?: boolean;
 }
 
+interface Board {
+	name: string;
+	id: string;
+	createdAt: number;
+}
+
 interface Tasks {
 	tasks: Task[];
+	boards: Board[];
 	createTask: (task: string) => void;
-	updateTask: (string: number, task: string) => void;
-	removeTask: (string: number) => void;
+	updateTask: (id: string, task: string) => void;
+	removeTask: (id: string) => void;
+	createBoard: (name: string) => void;
 }
 
 export const store = create<Tasks>((set, get) => ({
 	tasks: [],
-	createTask: (title) => {
+	boards: [],
+
+	fetchTasks: async () => {
+		const result = await axios.get("http://localhost:8080/tasks");
+		set({ tasks: result });
+	},
+
+	createBoard: (name: string) => {
+		const { boards } = get();
+
+		const newBoard = {
+			id: id(),
+			name,
+			createdAt: Date.now(),
+		};
+
+		set({
+			boards: [newBoard].concat(boards)
+		});
+	},
+
+	createTask: async (title) => {
 		const { tasks } = get();
 		const newTask = {
 			id: id(),

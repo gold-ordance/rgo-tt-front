@@ -11,9 +11,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 	<BrowserRouter>
 		<ErrorBoundary>
 			<ChakraProvider>
-				<React.StrictMode>
-					<App />
-				</React.StrictMode>
+				<App />
 			</ChakraProvider>
 		</ErrorBoundary>
 	</BrowserRouter>

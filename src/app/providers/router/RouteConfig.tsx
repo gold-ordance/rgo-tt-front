@@ -1,4 +1,4 @@
-import { HomePage } from "../../../pages";
+import { Backlog, HomePage } from "../../../pages";
 
 import { EAppRoutes, } from "./interfaces";
 import { RoutePath } from "./routePath";
@@ -8,4 +8,9 @@ export const routeConfig: {} = {
 	path: RoutePath.main,
 	element: <HomePage />,
   },
+
+	[ EAppRoutes.Backlog ]: {
+		path: RoutePath.backlog,
+		element: <Backlog />,
+	},
 };

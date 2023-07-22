@@ -1,5 +1,1 @@
-export const BASE_URL = "";
-
-export const ROUTES = {
-    HOME: "/",
-};
+export const BASE_URL = "http://localhost:8080/tasks";
