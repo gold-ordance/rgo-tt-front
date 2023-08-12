@@ -9,8 +9,8 @@ type BoardInput = {
 	name: string;
 };
 
-export const CreateNewBoard = () => {
-	const { createBoard } = store();
+export const CreateNewProject = () => {
+	const { createProject, projects } = store();
 	const { register, handleSubmit, reset, formState: { errors } } = useForm<BoardInput>();
 	const [isAdding, setIsAdding] = useState(false);
 	const formRef = useRef(null);
@@ -24,11 +24,13 @@ export const CreateNewBoard = () => {
 	const onSubmit = (data: BoardInput) => {
 		const boardText = data.name.trim();
 		if (boardText) {
-			createBoard(boardText);
+			createProject(boardText);
 			reset();
 			setIsAdding(false);
 		}
 	};
+
+	console.log(projects, "proecjts");
 
 	return (
 		<div>

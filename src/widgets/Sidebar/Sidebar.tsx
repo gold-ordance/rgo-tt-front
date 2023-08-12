@@ -7,54 +7,61 @@ import {
 	DrawerBody, DrawerCloseButton,
 	DrawerContent, DrawerFooter,
 	DrawerHeader,
-	DrawerOverlay, Flex, Menu, MenuItem, MenuList, Text, useDisclosure
+	DrawerOverlay, Menu, MenuItem, useDisclosure
 } from "@chakra-ui/react";
+import { ROUTES } from "@shared/constants";
 
 export const Sidebar = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const btnRef = useRef<HTMLDivElement | null>(null);
+	const { isOpen, onOpen, onClose } = useDisclosure();
+	const btnRef = useRef<HTMLDivElement | null>(null);
 
-  return (
-	<>
-		<Button ref={btnRef} colorScheme="teal" onClick={onOpen}>
-			Open
-		</Button>
-		<Drawer
-			isOpen={isOpen}
-			placement="left"
-			onClose={onClose}
-			finalFocusRef={btnRef}
-		>
-			<DrawerOverlay />
-			<DrawerContent>
-				<DrawerCloseButton />
-				<DrawerHeader>
-					Menu
-				</DrawerHeader>
+	return (
+		<>
+			<Button ref={btnRef} colorScheme="teal" onClick={onOpen}>
+				Open
+			</Button>
+			<Drawer
+				isOpen={isOpen}
+				placement="left"
+				onClose={onClose}
+				finalFocusRef={btnRef}
+			>
+				<DrawerOverlay />
+				<DrawerContent>
+					<DrawerCloseButton />
+					<DrawerHeader>
+						Menu
+					</DrawerHeader>
 
-				<DrawerBody>
-					<Menu>
-						<Link to="/">
-							<MenuItem fontSize="15px" fontWeight="bold">
-								Home
-							</MenuItem>
-						</Link>
-						<Link to="/backlog">
-							<MenuItem fontSize="15px" fontWeight="bold">
-								Backlog
-							</MenuItem>
-						</Link>
-					</Menu>
+					<DrawerBody>
+						<Menu>
+							<Link to={ROUTES.HOME}>
+								<MenuItem fontSize="15px" fontWeight="bold">
+									Home
+								</MenuItem>
+							</Link>
+							<Link to={ROUTES.BACKLOG}>
+								<MenuItem fontSize="15px" fontWeight="bold">
+									Backlog
+								</MenuItem>
+							</Link>
 
-				</DrawerBody>
+							<Link to={ROUTES.PROJECTS}>
+								<MenuItem fontSize="15px" fontWeight="bold">
+									Projects
+								</MenuItem>
+							</Link>
+						</Menu>
 
-				<DrawerFooter>
-					<Button variant="outline" mr={3} onClick={onClose}>
-						Cancel
-					</Button>
-				</DrawerFooter>
-			</DrawerContent>
-		</Drawer>
-	</>
-  );
+					</DrawerBody>
+
+					<DrawerFooter>
+						<Button variant="outline" mr={3} onClick={onClose}>
+							Cancel
+						</Button>
+					</DrawerFooter>
+				</DrawerContent>
+			</Drawer>
+		</>
+	);
 };

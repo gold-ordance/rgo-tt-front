@@ -1,12 +1,21 @@
 version: "3"
 services:
-  app:
-    build: .
+  task-db:
+    image: michisig/tt-task-db:snapshot
+    container_name: task-db
     ports:
-      - "5173:5173"
-    volumes:
-      - ./src:/app/src
-    environment:
-      - REACT_APP_NAME=task-tracker
-      - WATCHPACK_POLLING=true
+      - "5433:5432"
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
+  task-service:
+    image: michisig/tt-task-service:snapshot
+    container_name: task-service
+    ports:
+      - "8080:8080"
+    depends_on:
+      task-db:
+        condition: service_healthy
