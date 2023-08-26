@@ -6,7 +6,6 @@ import { Sidebar } from "@widgets";
 import { AppRoute } from "./providers/router/AppRoute";
 
 export const App = () => (
-
 	<Box width="100%" height="100vh" bg="#f1f1f1">
 		<Container maxW="1470px">
 			 <Sidebar />
