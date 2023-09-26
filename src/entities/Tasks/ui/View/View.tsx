@@ -1,22 +1,13 @@
-import React, { useEffect } from "react";
+import React from "react";
 
-import { store } from "@app/providers/StoreProvider";
-import { Box, Button, Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
+import { Box, Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 
-export const Tasks = () => {
-	const { tasks, removeTask, updateTask, fetchTasks } = store();
+export const Tasks = () =>
+	// const handleUpdateTask = (id, updatedTitle) => {
+	// 	updateTask(id, updatedTitle);
+	// };
 
-	console.log(tasks, "tasks");
-
-	useEffect(() => {
-		fetchTasks();
-	}, []);
-
-	const handleUpdateTask = (id, updatedTitle) => {
-		updateTask(id, updatedTitle);
-	};
-
-	return (
+	 (
 		<Box w="100%" p={4}>
 			<Table variant="striped" colorScheme="gray">
 				<Thead>
@@ -26,11 +17,11 @@ export const Tasks = () => {
 					</Tr>
 				</Thead>
 				<Tbody>
-					{tasks.map((task) => (
+					{[].map((task) => (
 						<Tr key={task.entityId}>
 							<Td>{task.name}</Td>
 							<Td isNumeric>
-								<Button size="xs" colorScheme="red" onClick={() => removeTask(task.entityId)}>Delete</Button>
+								{/* <Button size="xs" colorScheme="red" onClick={() => removeTask(task.entityId)}>Delete</Button> */}
 							</Td>
 						</Tr>
 					))}
@@ -38,4 +29,3 @@ export const Tasks = () => {
 			</Table>
 		</Box>
 	);
-};

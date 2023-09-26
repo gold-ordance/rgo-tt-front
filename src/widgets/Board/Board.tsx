@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 
-import { store } from "@app/providers/StoreProvider";
-import { Badge, Box, Button, Flex, Input, Tooltip } from "@chakra-ui/react";
+import { Badge, Box, Flex, Input, Tooltip } from "@chakra-ui/react";
 
 export const Board = ({ board }) => {
-	const { createTask, reorderTasks, tasks, fetchTasks } = store();
 	const [showInput, setShowInput] = useState(false);
 	const [taskTitle, setTaskTitle] = useState("");
 
@@ -13,18 +11,14 @@ export const Board = ({ board }) => {
 		e.preventDefault();
 		const todoText = taskTitle.trim();
 		if (todoText) {
-			createTask(todoText, board.entityId);
+			// createTask(todoText, board.entityId);
 			setTaskTitle("");
 			setShowInput(false);
 		}
 	};
 
-	useEffect(() => {
-		fetchTasks(board.entityId);
-	}, fetchTasks);
-
 	const handleDragEnd = (result) => {
-		reorderTasks(result);
+		// reorderTasks(result);
 	};
 
 	return (
@@ -60,7 +54,7 @@ export const Board = ({ board }) => {
 				<Droppable droppableId={board.id}>
 					{(provided) => (
 						<Box {...provided.droppableProps} ref={provided.innerRef}>
-							{tasks?.map((task, index) => (
+							{[]?.map((task, index) => (
 								<Draggable key={task.entityId} draggableId={task.entityId} index={index}>
 									{(provided) => (
 										<Box
