@@ -13,12 +13,10 @@ export const BoardBlock = () => {
 
 	if (isLoading) return <p>loading</p>;
 
-	console.log(data, "data");
-
 	return (
 		<Box maxW="100%" overflow="hidden" mx="2" my="5">
 			<div className={styles.boards}>
-				{data?.taskStatuses?.map((board) => (
+				{data?.map((board) => (
 					<Board key={board.entityId} board={board} />
 				))}
 			</div>

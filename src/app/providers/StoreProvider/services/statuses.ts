@@ -6,7 +6,12 @@ interface Status {
 	entityId: number
 }
 
-type Statuses = Status[]
+export type Message = {
+	message: unknown;
+	statusCode: string
+}
+
+type Statuses = Status[] | Message
 
 export const statusesApi = createApi({
 	baseQuery: fetchBaseQuery({
@@ -19,7 +24,8 @@ export const statusesApi = createApi({
 				url: "/statuses",
 				method: "GET"
 			}),
-			providesTags: [{ type: "Statuses", id: "LIST" }]
+			providesTags: [{ type: "Statuses", id: "LIST" }],
+			transformResponse: ((response: { taskStatuses: Status[] }) => response.taskStatuses)
 		}),
 	}),
 });
