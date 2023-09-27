@@ -26,10 +26,20 @@ export const boardsApi = createApi({
 			providesTags: [{ type: "Board", id: "LIST" }],
 			transformResponse: ((response: { boards: Board[] }) => response.boards)
 		}),
-
+		createBoard: build.mutation<string, Partial<Board>>({
+			query(body) {
+				return {
+					url: "tasks-board",
+					method: "POST",
+					body,
+				};
+			},
+			invalidatesTags: [{ type: "Board", id: "LIST" }],
+		}),
 	}),
 });
 
 export const {
 	useGetBoardsQuery,
+	useCreateBoardMutation
 } = boardsApi;

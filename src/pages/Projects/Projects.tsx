@@ -1,11 +1,11 @@
 import React from "react";
 
 import { ProjectsTable } from "@entities/Projects";
+import { CreateNewProject } from "@features";
 
 export const Projects = () => (
-	<div>
-		projects
+	<>
 		<ProjectsTable />
-		{/* <CreateNewProject /> */}
-	</div>
+		<CreateNewProject />
+	</>
 );

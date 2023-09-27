@@ -48,6 +48,9 @@
       "@entities": [
         "./entities"
       ],
+      "@pages": [
+        "./pages"
+      ],
       "@entities/*": [
         "./entities/*"
       ]

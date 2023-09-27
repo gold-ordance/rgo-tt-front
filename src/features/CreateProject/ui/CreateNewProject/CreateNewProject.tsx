@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 
-import { store } from "@app/providers/StoreProvider";
+import { useCreateBoardMutation } from "@app/providers/StoreProvider/services";
 import { Box, Button, Input, Text, Tooltip } from "@chakra-ui/react";
 import { useOutsideClick } from "@shared/hooks";
 
@@ -10,7 +10,7 @@ type BoardInput = {
 };
 
 export const CreateNewProject = () => {
-	const { createProject, projects } = store();
+	const [createBoard, { isLoading: isLoadingCreateBoard }] = useCreateBoardMutation();
 	const { register, handleSubmit, reset, formState: { errors } } = useForm<BoardInput>();
 	const [isAdding, setIsAdding] = useState(false);
 	const formRef = useRef(null);
@@ -24,13 +24,11 @@ export const CreateNewProject = () => {
 	const onSubmit = (data: BoardInput) => {
 		const boardText = data.name.trim();
 		if (boardText) {
-			createProject(boardText);
+			createBoard({ name: boardText });
 			reset();
 			setIsAdding(false);
 		}
 	};
-
-	console.log(projects, "proecjts");
 
 	return (
 		<div>

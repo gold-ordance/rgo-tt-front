@@ -1,9 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 
 import { Layout } from "@app/providers/layout/layout";
+import { Backlog, ErrorPage, HomePage, Projects } from "@pages";
 import { ROUTES } from "@shared/constants";
-
-import { ErrorPage, HomePage, Projects } from "../../../pages";
 
 export const router = createBrowserRouter([
 	{
@@ -18,6 +17,10 @@ export const router = createBrowserRouter([
 			{
 				path: ROUTES.PROJECTS,
 				element: <Projects />
+			},
+			{
+				path: ROUTES.BACKLOG,
+				element: <Backlog />
 			},
 		]
 	},

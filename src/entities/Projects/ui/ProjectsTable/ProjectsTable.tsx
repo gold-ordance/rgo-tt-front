@@ -12,8 +12,6 @@ export const ProjectsTable = () => {
 
 	if (isLoading) return <p>loading</p>;
 
-	console.log(data, "datra");
-
 	return (
 		<div>
 			<Box w="100%" p={4}>
@@ -32,7 +30,7 @@ export const ProjectsTable = () => {
 						{data?.map((project) => (
 							<Tr key={project.entityId}>
 								<Link to={`${ROUTES.PROJECTS} ${project.entityId}}`}>
-									<Td>{project.entityId}</Td>
+									<Td>{project.name}</Td>
 									{/* <Td>Ключ</Td> */}
 									{/* <Td>Тип</Td> */}
 									{/* <Td>Руководитель</Td> */}
