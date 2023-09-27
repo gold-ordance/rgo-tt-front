@@ -28,7 +28,7 @@ export const ProjectsTable = () => {
 					<Tbody>
 						{data?.map((project) => (
 							<Tr key={project.entityId}>
-								<Link to={`/projects/${project.name}`}>
+								<Link to={`/projects/${project.entityId}`}>
 									<Td>{project.name}</Td>
 									{/* <Td>Ключ</Td> */}
 									{/* <Td>Тип</Td> */}

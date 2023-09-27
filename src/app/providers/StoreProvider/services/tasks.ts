@@ -25,6 +25,14 @@ export const tasksApi = createApi({
 		task: builder.query<Task, number>({
 			query: (name) => `/tasks/${name}`,
 		}),
+		board: builder.query<Task[], { boardId?: string }>({
+			query: ({ boardId }) => ({
+				url: "/tasks",
+				method: "GET",
+				params: { boardId },
+			}),
+			providesTags: [{ type: "Tasks", id: "LIST" }],
+		}),
 	}),
 });
-export const { useTasksQuery, useTaskQuery } = tasksApi;
+export const { useTasksQuery, useTaskQuery, useBoardQuery } = tasksApi;

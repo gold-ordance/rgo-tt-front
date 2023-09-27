@@ -9,7 +9,7 @@ export const store = configureStore({
 	},
 	middleware: (getDefaultMiddleware) => (
 		getDefaultMiddleware().concat(
-			[statusesApi.middleware, boardsApi.middleware]
+			[statusesApi.middleware, boardsApi.middleware, tasksApi.middleware]
 		)
 	)
 });

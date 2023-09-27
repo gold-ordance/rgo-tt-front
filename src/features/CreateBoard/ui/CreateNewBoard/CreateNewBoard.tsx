@@ -1,7 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 
-import { store } from "@app/providers/StoreProvider";
 import { Box, Button, Input, Text, Tooltip } from "@chakra-ui/react";
 import { useOutsideClick } from "@shared/hooks";
 
@@ -10,7 +9,7 @@ type BoardInput = {
 };
 
 export const CreateNewBoard = () => {
-	const { createBoard } = store();
+	// const { createBoard } = store();
 	const { register, handleSubmit, reset, formState: { errors } } = useForm<BoardInput>();
 	const [isAdding, setIsAdding] = useState(false);
 	const formRef = useRef(null);
@@ -24,7 +23,7 @@ export const CreateNewBoard = () => {
 	const onSubmit = (data: BoardInput) => {
 		const boardText = data.name.trim();
 		if (boardText) {
-			createBoard(boardText);
+			// createBoard(boardText);
 			reset();
 			setIsAdding(false);
 		}
