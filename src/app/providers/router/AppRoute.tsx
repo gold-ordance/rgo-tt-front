@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 
 import { Layout } from "@app/providers/layout/layout";
-import { Backlog, ErrorPage, HomePage, Projects } from "@pages";
+import { Backlog, ErrorPage, ProjectPage, Projects } from "@pages";
 import { ROUTES } from "@shared/constants";
 
 export const router = createBrowserRouter([
@@ -11,12 +11,12 @@ export const router = createBrowserRouter([
 		element: <Layout />,
 		children: [
 			{
-				path: ROUTES.HOME,
-				element: <HomePage />,
+				path: ROUTES.PROJECTS,
+				element: <Projects />,
 			},
 			{
-				path: ROUTES.PROJECTS,
-				element: <Projects />
+				path: ROUTES.PROJECT_ID,
+				element: <ProjectPage />
 			},
 			{
 				path: ROUTES.BACKLOG,

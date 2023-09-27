@@ -10,9 +10,16 @@ type BoardInput = {
 };
 
 export const CreateNewProject = () => {
-	const [createBoard, { isLoading: isLoadingCreateBoard }] = useCreateBoardMutation();
-	const { register, handleSubmit, reset, formState: { errors } } = useForm<BoardInput>();
 	const [isAdding, setIsAdding] = useState(false);
+	const [createBoard, { isLoading: isLoadingCreateBoard }] = useCreateBoardMutation();
+
+	const {
+		register,
+		handleSubmit,
+		reset,
+		formState: { errors },
+	} = useForm<BoardInput>();
+
 	const formRef = useRef(null);
 
 	useOutsideClick(formRef, () => {
@@ -35,14 +42,21 @@ export const CreateNewProject = () => {
 			{isAdding ? (
 				<Box ref={formRef}>
 					<form onSubmit={handleSubmit(onSubmit)}>
-						<Input type="text" name="name" placeholder="Enter a board name" {...register("name", { required: true })} />
+						<Input
+							type="text"
+							placeholder="Enter a board name"
+							{...register("name", { required: true })}
+						/>
 						{errors.name && <Text color="red">This field is required</Text>}
 						<Button type="submit">Add board</Button>
 					</form>
 				</Box>
 			) : (
 				<Tooltip label="Создать столбец">
-					<Button onClick={() => setIsAdding(true)}>
+					<Button
+						onClick={() => setIsAdding(true)}
+						isLoading={isLoadingCreateBoard}
+					>
 						<div>+</div>
 					</Button>
 				</Tooltip>

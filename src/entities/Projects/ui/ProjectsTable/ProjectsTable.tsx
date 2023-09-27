@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 import { useGetBoardsQuery } from "@app/providers/StoreProvider/services";
 import { Box, Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
-import { ROUTES } from "@shared/constants";
 
 export const ProjectsTable = () => {
 	const { data, isLoading, isFetching, isError } = useGetBoardsQuery();
@@ -29,7 +28,7 @@ export const ProjectsTable = () => {
 					<Tbody>
 						{data?.map((project) => (
 							<Tr key={project.entityId}>
-								<Link to={`${ROUTES.PROJECTS} ${project.entityId}}`}>
+								<Link to={`/projects/${project.name}`}>
 									<Td>{project.name}</Td>
 									{/* <Td>Ключ</Td> */}
 									{/* <Td>Тип</Td> */}
