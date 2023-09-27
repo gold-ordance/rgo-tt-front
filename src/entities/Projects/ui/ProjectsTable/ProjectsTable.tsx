@@ -1,21 +1,23 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
-import { store } from "@app/providers/StoreProvider";
-import { Box, Button, Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
+import { useGetBoardsQuery } from "@app/providers/StoreProvider/services";
+import { Box, Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
+import { ROUTES } from "@shared/constants";
 
 export const ProjectsTable = () => {
-	const { fetchProjects, projects } = store();
+	const { data, isLoading, isFetching, isError } = useGetBoardsQuery();
 
-	useEffect(() => {
-		fetchProjects();
-	}, [fetchProjects]);
+	if (isError) return <div>An error has occurred!</div>;
 
-	console.log(projects, "rpoecjts");
+	if (isLoading) return <p>loading</p>;
+
+	console.log(data, "datra");
 
 	return (
 		<div>
 			<Box w="100%" p={4}>
+
 				<Table variant="striped" colorScheme="gray">
 					<Thead>
 						<Tr>
@@ -27,14 +29,14 @@ export const ProjectsTable = () => {
 						</Tr>
 					</Thead>
 					<Tbody>
-						{projects.map((project) => (
+						{data?.map((project) => (
 							<Tr key={project.entityId}>
-								<Link to={`/projects/${project.entityId}}`}>
-									<Td>{project.name}</Td>
+								<Link to={`${ROUTES.PROJECTS} ${project.entityId}}`}>
+									<Td>{project.entityId}</Td>
+									{/* <Td>Ключ</Td> */}
+									{/* <Td>Тип</Td> */}
+									{/* <Td>Руководитель</Td> */}
 								</Link>
-								<Td>Ключ</Td>
-								<Td>Тип</Td>
-								<Td>Руководитель</Td>
 							</Tr>
 						))}
 					</Tbody>

@@ -1,17 +1,21 @@
-import React, { Suspense } from "react";
+import React, { FC, Suspense } from "react";
+import { Outlet } from "react-router-dom";
 
 import { Box, CircularProgress, Container } from "@chakra-ui/react";
 import { Sidebar } from "@widgets";
 
-import { AppRoute } from "./providers/router/AppRoute";
+interface LayoutProps {
+	children: React.ReactNode
+}
 
-export const App = () => (
+export const Layout: FC<LayoutProps> = ({ children }) => (
 	<Box width="100%" height="100vh" bg="#f1f1f1" overflow="auto">
 		<Container maxW="1470px">
 			<Sidebar />
 			<Suspense fallback={<CircularProgress isIndeterminate color="green.300" />}>
 				<div className="content-page">
-					<AppRoute />
+					{children}
+					<Outlet />
 				</div>
 			</Suspense>
 		</Container>

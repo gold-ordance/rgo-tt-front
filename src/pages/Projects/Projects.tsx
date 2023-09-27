@@ -1,8 +1,11 @@
 import React from "react";
 
+import { ProjectsTable } from "@entities/Projects";
+
 export const Projects = () => (
 	<div>
-		{/* <ProjectsTable /> */}
+		projects
+		<ProjectsTable />
 		{/* <CreateNewProject /> */}
 	</div>
 );

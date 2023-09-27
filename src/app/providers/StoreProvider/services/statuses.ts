@@ -1,5 +1,5 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { BASE_URL } from "@shared/constants";
+import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
+import {BASE_URL} from "@shared/constants";
 
 interface Status {
 	name: string;
@@ -24,7 +24,7 @@ export const statusesApi = createApi({
 				url: "/statuses",
 				method: "GET"
 			}),
-			providesTags: [{ type: "Statuses", id: "LIST" }],
+			providesTags: [{type: "Statuses", id: "LIST"}],
 			transformResponse: ((response: { taskStatuses: Status[] }) => response.taskStatuses)
 		}),
 	}),

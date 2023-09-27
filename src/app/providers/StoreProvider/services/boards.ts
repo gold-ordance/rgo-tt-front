@@ -12,28 +12,24 @@ interface Board {
 type Boards = Board[]
 
 export const boardsApi = createApi({
+	reducerPath: "boardsApi",
 	baseQuery: fetchBaseQuery({
 		baseUrl: BASE_URL
 	}),
 	tagTypes: ["Board"],
 	endpoints: (build) => ({
 		getBoards: build.query<Boards, void>({
-			query: () => "tasks-board",
-			providesTags: (result) => (result
-				? [
-					...result.map(({ id }) => ({ type: "Board" as const, id })),
-					{ type: "Board", id: "LIST" },
-				]
-				: [{ type: "Board", id: "LIST" }]),
+			query: () => ({
+				url: "tasks-board",
+				method: "GET"
+			}),
+			providesTags: [{ type: "Board", id: "LIST" }],
+			transformResponse: ((response: { boards: Board[] }) => response.boards)
 		}),
-		getBoard: build.query<Board, string>({
-			query: (id) => `boards/${id}`,
-			providesTags: (result, error, id) => [{ type: "Board", id }],
-		}),
+
 	}),
 });
 
 export const {
 	useGetBoardsQuery,
-	useGetBoardQuery
 } = boardsApi;
