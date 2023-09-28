@@ -31,6 +31,7 @@ export const tasksApi = createApi({
 				method: "GET",
 				params: { boardId },
 			}),
+			transformResponse: ((response: { tasks: Task[] }) => response.tasks),
 			providesTags: [{ type: "Tasks", id: "LIST" }],
 		}),
 	}),

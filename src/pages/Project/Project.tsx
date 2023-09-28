@@ -7,14 +7,14 @@ import { CreateNewBoard } from "@features";
 
 export const ProjectPage = () => {
 	const { id } = useParams();
-	const { data: tasks } = useBoardQuery({ boardId: id });
+	const { data: board } = useBoardQuery({ boardId: id });
 
 	return (
 		<div>
 			{id}
 			{" "}
 			- project
-			<BoardBlock />
+			<BoardBlock boardInfo={board} />
 			<CreateNewBoard />
 		</div>
 	);

@@ -6,7 +6,7 @@ import { Board } from "@widgets";
 
 import styles from "./BoardBlock.module.scss";
 
-export const BoardBlock = () => {
+export const BoardBlock = ({ boardInfo }) => {
 	const { data, isLoading, isFetching, isError } = useGetStatusesQuery();
 
 	if (isError) return <div>An error has occurred!</div>;
@@ -17,7 +17,7 @@ export const BoardBlock = () => {
 		<Box maxW="100%" overflow="hidden" mx="2" my="5">
 			<div className={styles.boards}>
 				{data?.map((board) => (
-					<Board key={board.entityId} board={board} />
+					<Board key={board.entityId} board={board} boardInfo={boardInfo} />
 				))}
 			</div>
 		</Box>

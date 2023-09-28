@@ -3,7 +3,7 @@ import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 
 import { Badge, Box, Flex, Input, Tooltip } from "@chakra-ui/react";
 
-export const Board = ({ board }) => {
+export const Board = ({ board, boardInfo }) => {
 	const [showInput, setShowInput] = useState(false);
 	const [taskTitle, setTaskTitle] = useState("");
 
@@ -21,6 +21,9 @@ export const Board = ({ board }) => {
 		// reorderTasks(result);
 	};
 
+	console.log(boardInfo, "boardInfo");
+
+
 	return (
 		<Box py="5" px="2" bg="#F7F8F9" minHeight={500} overflowY="auto">
 			<Box display="flex" alignItems="baseline" justifyContent="space-between">
@@ -37,8 +40,8 @@ export const Board = ({ board }) => {
 				>
 					<Flex gap={3} alignItems="center">
 						<div>
-							{/*	{tasks.length} */}
-							- tasks
+							{/* {boardInfo.length} */}
+							{/* - tasks */}
 						</div>
 						<Tooltip label="Создать задачу">
 							<Badge borderRadius="full" fontSize={20} onClick={() => setShowInput(true)} cursor="pointer">
@@ -54,7 +57,7 @@ export const Board = ({ board }) => {
 				<Droppable droppableId={board.id}>
 					{(provided) => (
 						<Box {...provided.droppableProps} ref={provided.innerRef}>
-							{[]?.map((task, index) => (
+							{boardInfo?.map((task, index) => (
 								<Draggable key={task.entityId} draggableId={task.entityId} index={index}>
 									{(provided) => (
 										<Box
