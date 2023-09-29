@@ -36,6 +36,15 @@ export const boardsApi = createApi({
 			},
 			invalidatesTags: [{ type: "Board", id: "LIST" }],
 		}),
+		deleteBoard: build.mutation<{ success: boolean; entityId number }, number>({
+			query(entityId) {
+				return {
+					url: `tasks-board/${entityId}`,
+					method: "DELETE",
+				};
+			},
+			invalidatesTags: (post) => [{ type: "Board", id: post?.entityId }],
+		}),
 	}),
 });
 
